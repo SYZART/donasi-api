@@ -9,14 +9,15 @@ class ProdukController extends Controller
 {
     public function create(Request $request)
     {
-        $judul_iklan = $request->input('judul_iklan');
-        $dana_need = $request->input('dana_need');
-        $dana_collected = $request->input('dana_collected');
+        $judulIklan = $request->input('judulIklan');
+        $danaNeed = $request->input('danaNeed');
+        $danaCollected = $request->input('danaCollected');
+        $url =  $request->input('url');
         $cerita = $request->input('cerita');
         $produk = Produk::create([
-            'judul_iklan' => $judul_iklan,
-            'dana_need' => $dana_need,
-            'dana_collected' => $dana_collected,
+            'judulIklan' => $judulIklan,
+            'danaNeed' => $danaNeed,
+            'danaCollected' => $danaCollected,
             'url'=>$url,
             'cerita'=>$cerita
         ]);
@@ -34,17 +35,18 @@ class ProdukController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $judul_iklan = $request->input('judul_iklan');
-        $dana_need = $request->input('dana_need');
-        $dana_collected = $request->input('dana_collected');
-        $cerita =$request->input('cerita');
+        $judulIklan = $request->input('judulIklan');
+        $danaNeed = $request->input('danaNeed');
+        $danaCollected = $request->input('danaCollected');
+        $url =  $request->input('url');
+        $cerita = $request->input('cerita');
 
         $produk = Produk::findOrFail($id);
         $result = $produk->update([
-            'judul_iklan' => $judul_iklan,
-            'dana_need' => $dana_need,
-            'dana_collected' => $dana_collected,
-            // 'url'=>$url,
+           'judulIklan' => $judulIklan,
+            'danaNeed' => $danaNeed,
+            'danaCollected' => $danaCollected,
+            'url'=>$url,
             'cerita'=>$cerita
         ]);
         return $this->responseHasil(200, true, $result);
